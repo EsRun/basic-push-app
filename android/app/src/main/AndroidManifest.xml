@@ -13,7 +13,9 @@
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true">
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
@@ -38,5 +40,8 @@
        <meta-data
            android:name="firebase_analytics_collection_enabled"
            android:value="false" />
+       <meta-data
+           android:name="com.google.firebase.messaging.notification_channel_id"
+           android:value="@string/notification_channel_id" />
     </application>
 </manifest>
