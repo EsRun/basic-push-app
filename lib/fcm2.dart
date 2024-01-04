@@ -1,22 +1,18 @@
-import 'dart:convert';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-
-
 // 백그라운드 푸시 핸들러
 @pragma('vm:entry-point')
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async{
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async{
   await Firebase.initializeApp();
   print('Handling a background message: ${message?.notification?.title}');
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-  showNotification(flutterLocalNotificationsPlugin, message);
+  showNotification(flutterLocalNotificationsPlugin, message!);
 }
 
 // 푸시 알림창 설정
-Future<void> showNotification(FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin, RemoteMessage message) async{
+Future<void> showNotification(FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin, RemoteMessage message) async {
   // foreground 알람을 위해 채널 생성
   const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'notification_channel_id',
@@ -25,23 +21,34 @@ Future<void> showNotification(FlutterLocalNotificationsPlugin flutterLocalNotifi
     description: 'This channel is used for important notifications',
     importance: Importance.max,
   );
-  await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(channel);
+  await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
+      AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(
+      channel);
 
-  flutterLocalNotificationsPlugin.show(
-      message.notification.hashCode,
-      message.notification?.title,
-      message.notification?.body,
-      NotificationDetails(
-        android: AndroidNotificationDetails(
-          channel.id,
-          channel.name,
-          channelDescription: channel.description,
-          icon: '@mipmap/ic_launcher',
-          //icon: '@android:drawable/btn_default_small'
-          // other properties...
-        ),
-      )
-  );
+  RemoteNotification? notification = message.notification;
+  AndroidNotification? android = message.notification?.android;
+  print('message: ${message}');
+  print('notification: ${notification}');
+  print('android: ${android}');
+
+
+  if (message?.notification != null){
+    flutterLocalNotificationsPlugin.show(
+        message.notification.hashCode,
+        message?.notification?.title,
+        message?.notification?.body,
+        NotificationDetails(
+          android: AndroidNotificationDetails(
+            channel.id,
+            channel.name,
+            channelDescription: channel.description,
+            icon: '@mipmap/ic_launcher',
+            //icon: '@android:drawable/btn_default_small'
+            // other properties...
+          ),
+        )
+    );
+  }
 }
 
 class Fcm{
@@ -77,7 +84,6 @@ class Fcm{
 
     FirebaseMessaging.instance.getInitialMessage().then(handleMessage);
     FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       showNotification(flutterLocalNotificationsPlugin, message);
     });
