@@ -1,7 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'fcm.dart';
+import 'fcm2.dart';
 import 'firebase_options.dart';
 import 'notificationPage.dart';
 /*
@@ -12,7 +12,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async{
 
 }
 */
-final navigatorKey = GlobalKey<NavigatorState>();
+//final navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,10 +33,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      navigatorKey: navigatorKey,
-      routes: {
-        '/notification_screen': (context) => const NotificationPage()
-      },
+      //navigatorKey: navigatorKey,
+      //routes: {
+      //  '/notification_screen': (context) => const NotificationPage()
+      //},
     );
   }
 }

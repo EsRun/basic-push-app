@@ -8,6 +8,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async{
   await Firebase.initializeApp();
   print('Handling a background message: ${message?.notification?.title}');
+
 }
 
 class Fcm{
@@ -23,18 +24,6 @@ class Fcm{
       importance: Importance.max,
   );
 
-  // 푸시 메세지 클릭 시 페이지 이동
-  void handleMessage(RemoteMessage? message){
-    if(message == null) return;
-
-    /* background fcm 알람 클릭 시 페이지 이동
-    navigatorKey.currentState?.pushNamed(
-      '/notification_screen',
-      arguments: message,
-    );
-    */
-  }
-
   Future<void> initNotification() async {
     NotificationSettings settings = await messaging.requestPermission(
       alert: true,
@@ -49,7 +38,7 @@ class Fcm{
     print(fcmToken);
     print('User granted permission: ${settings.authorizationStatus}');
 
-    //FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
     await initPush();
   }
 
@@ -62,7 +51,7 @@ class Fcm{
 
     FirebaseMessaging.instance.getInitialMessage().then(handleMessage);
     FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
-    //FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
@@ -77,6 +66,7 @@ class Fcm{
               android: AndroidNotificationDetails(
                 channel.id,
                 channel.name,
+                priority: Priority.high,
                 channelDescription: channel.description,
                 //icon: '@mipmap/ic_launcher',
                 icon: '@android:drawable/btn_default_small'
@@ -89,7 +79,19 @@ class Fcm{
     });
   }
 
-  Future<void> msgNotification(RemoteMessage message) async{
+  // 푸시 메세지 클릭 시 페이지 이동
+  void handleMessage(RemoteMessage? message){
+    if(message == null) return;
+
+    /* background fcm 알람 클릭 시 페이지 이동
+    navigatorKey.currentState?.pushNamed(
+      '/notification_screen',
+      arguments: message,
+    );
+    */
+  }
+
+  Future<void> showNotification(RemoteMessage message) async{
     final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
     await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(channel);
     flutterLocalNotificationsPlugin.show(
@@ -101,8 +103,8 @@ class Fcm{
               channel.id,
               channel.name,
               channelDescription: channel.description,
-              //icon: '@mipmap/ic_launcher',
-              icon: '@android:drawable/btn_default_small'
+              icon: '@mipmap/ic_launcher',
+              //icon: '@android:drawable/btn_default_small'
             // other properties...
           ),
         )
