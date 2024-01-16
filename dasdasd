@@ -1,0 +1,47 @@
+[33mcommit cd0fa63f07d19773f4a6343970caf8a0533dd94b[m[33m ([m[1;36mHEAD -> [m[1;32mctemp[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/current_temp[m[33m, [m[1;32mmain[m[33m)[m
+Author: 비엔나 <sure@paran.com>
+Date:   Tue Jan 16 09:58:02 2024 +0900
+
+    fix : fcm process
+
+[33mcommit 51173cf9fc923c5581d92b062dd1cfb03cf9bcb8[m
+Author: 비엔나 <sure@paran.com>
+Date:   Thu Jan 4 11:39:15 2024 +0900
+
+    fix : local notification expression
+
+[33mcommit c70abc91499e2d678c33d26809b166843286e7aa[m
+Author: 비엔나 <sure@paran.com>
+Date:   Thu Jan 4 09:18:14 2024 +0900
+
+    add : push local notification
+
+[33mcommit 1e5eefde66eee4dcb987be565b9fe262b61ea60e[m
+Author: 비엔나 <sure@paran.com>
+Date:   Wed Jan 3 16:41:22 2024 +0900
+
+    test : bacgkround notification
+
+[33mcommit e7d03fdbadf56a82aa078820adeec4a331072cac[m
+Author: 비엔나 <sure@paran.com>
+Date:   Tue Jan 2 16:39:25 2024 +0900
+
+    test : push noti
+
+[33mcommit 6137972c2d55b63aef1d76568adce5d71a2843ef[m
+Author: 비엔나 <sure@paran.com>
+Date:   Tue Jan 2 15:52:58 2024 +0900
+
+    add : fcm init
+
+[33mcommit d8bf9055a6a76f91d8a5fff1c55c3259c24990ca[m
+Author: 비엔나 <sure@paran.com>
+Date:   Tue Jan 2 15:31:05 2024 +0900
+
+    init
+
+[33mcommit 6beaa67b286774478e81578dcf7fe7247e87a62a[m
+Author: 비엔나 <sure@paran.com>
+Date:   Tue Jan 2 15:30:17 2024 +0900
+
+    init
