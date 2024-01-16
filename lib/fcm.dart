@@ -38,7 +38,7 @@ class Fcm{
     print(fcmToken);
     print('User granted permission: ${settings.authorizationStatus}');
 
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+    //FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
     await initPush();
   }
 
@@ -51,7 +51,7 @@ class Fcm{
 
     FirebaseMessaging.instance.getInitialMessage().then(handleMessage);
     FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+    //FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;

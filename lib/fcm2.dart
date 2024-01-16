@@ -2,10 +2,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+import 'firebase_options.dart';
+
 // 백그라운드 푸시 핸들러
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async{
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
   print('Handling a background message: ${message?.notification?.title}');
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
   showNotification(flutterLocalNotificationsPlugin, message!);
@@ -15,22 +17,15 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async{
 Future<void> showNotification(FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin, RemoteMessage message) async {
   // foreground 알람을 위해 채널 생성
   const AndroidNotificationChannel channel = AndroidNotificationChannel(
-    'notification_channel_id',
+    'default_notification_channel_id',
     //'high_importance_channel', // id
     'High Importance Notifications', // title
     description: 'This channel is used for important notifications',
-    importance: Importance.max,
+    importance: Importance.high,
   );
   await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
       AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(
       channel);
-
-  RemoteNotification? notification = message.notification;
-  AndroidNotification? android = message.notification?.android;
-  print('message: ${message}');
-  print('notification: ${notification}');
-  print('android: ${android}');
-
 
   if (message?.notification != null){
     flutterLocalNotificationsPlugin.show(
@@ -56,6 +51,7 @@ class Fcm{
 
   // 알림 설정 초기화
   Future<void> initNotification() async {
+    messaging.subscribeToTopic('test');
     NotificationSettings settings = await messaging.requestPermission(
       alert: true,
       announcement: false,
