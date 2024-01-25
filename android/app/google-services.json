@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "720599880060",
-    "project_id": "fcm-push-learn",
-    "storage_bucket": "fcm-push-learn.appspot.com"
+    "project_number": "755773041370",
+    "project_id": "mungyeong-b77e4",
+    "storage_bucket": "mungyeong-b77e4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:720599880060:android:b39c5948ed592b8bcd94f9",
+        "mobilesdk_app_id": "1:755773041370:android:b0a83cba60ffd293f1d3e3",
         "android_client_info": {
           "package_name": "com.example.push.push_app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAjw8TAZHvuw7nmYZJKXf4AR_CXl1aAKDc"
+          "current_key": "AIzaSyDT5y-Oc3myGvAo2EQrzJuJgVppCVUPpR8"
         }
       ],
       "services": {

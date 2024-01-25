@@ -44,37 +44,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBqt0y2jVoAJDW4v_uLQ4vMZHLc3xUbgiE',
-    appId: '1:720599880060:web:1a9c87883c4e032bcd94f9',
-    messagingSenderId: '720599880060',
-    projectId: 'fcm-push-learn',
-    authDomain: 'fcm-push-learn.firebaseapp.com',
-    storageBucket: 'fcm-push-learn.appspot.com',
+    apiKey: 'AIzaSyDSDQoBCSEWbWNV0Q72Cqj9qYwfRSpW51U',
+    appId: '1:755773041370:web:a8adc87600902003f1d3e3',
+    messagingSenderId: '755773041370',
+    projectId: 'mungyeong-b77e4',
+    authDomain: 'mungyeong-b77e4.firebaseapp.com',
+    storageBucket: 'mungyeong-b77e4.appspot.com',
+    measurementId: 'G-RC1B04CRPX',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAjw8TAZHvuw7nmYZJKXf4AR_CXl1aAKDc',
-    appId: '1:720599880060:android:b39c5948ed592b8bcd94f9',
-    messagingSenderId: '720599880060',
-    projectId: 'fcm-push-learn',
-    storageBucket: 'fcm-push-learn.appspot.com',
+    apiKey: 'AIzaSyDT5y-Oc3myGvAo2EQrzJuJgVppCVUPpR8',
+    appId: '1:755773041370:android:b0a83cba60ffd293f1d3e3',
+    messagingSenderId: '755773041370',
+    projectId: 'mungyeong-b77e4',
+    storageBucket: 'mungyeong-b77e4.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCW_1i1SGhDys5R8mkIuRcDht7NsaWTd24',
-    appId: '1:720599880060:ios:30dec6dee6d659dacd94f9',
-    messagingSenderId: '720599880060',
-    projectId: 'fcm-push-learn',
-    storageBucket: 'fcm-push-learn.appspot.com',
+    apiKey: 'AIzaSyDbP2dMderrdKlQ16WfobLJHI6yMKApclw',
+    appId: '1:755773041370:ios:a17d4f4510f5e9b2f1d3e3',
+    messagingSenderId: '755773041370',
+    projectId: 'mungyeong-b77e4',
+    storageBucket: 'mungyeong-b77e4.appspot.com',
     iosBundleId: 'com.example.push.pushApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCW_1i1SGhDys5R8mkIuRcDht7NsaWTd24',
-    appId: '1:720599880060:ios:30dec6dee6d659dacd94f9',
-    messagingSenderId: '720599880060',
-    projectId: 'fcm-push-learn',
-    storageBucket: 'fcm-push-learn.appspot.com',
+    apiKey: 'AIzaSyDbP2dMderrdKlQ16WfobLJHI6yMKApclw',
+    appId: '1:755773041370:ios:a17d4f4510f5e9b2f1d3e3',
+    messagingSenderId: '755773041370',
+    projectId: 'mungyeong-b77e4',
+    storageBucket: 'mungyeong-b77e4.appspot.com',
     iosBundleId: 'com.example.push.pushApp',
   );
 }

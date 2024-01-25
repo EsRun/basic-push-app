@@ -1,9 +1,10 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:push_app/alert_widget.dart';
 import 'fcm2.dart';
 import 'firebase_options.dart';
-import 'notificationPage.dart';
+
 /*
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async{
@@ -65,19 +66,21 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        child: ElevatedButton(
+          onPressed: () {
+            // Show the AlertWidget when the button is pressed
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertWidget();
+              },
+            );
+          },
+          child: Text('Show Alert'),
         ),
-      ),
+
+        ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
@@ -86,3 +89,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+

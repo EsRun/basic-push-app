@@ -17,15 +17,27 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async{
 Future<void> showNotification(FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin, RemoteMessage message) async {
   // foreground 알람을 위해 채널 생성
   const AndroidNotificationChannel channel = AndroidNotificationChannel(
-    'default_notification_channel_id',
+    'push main channel',
     //'high_importance_channel', // id
-    'High Importance Notifications', // title
+    'just channel', // title
+    description: 'This channel is used for important notifications',
+    importance: Importance.high,
+  );
+
+  const AndroidNotificationChannel channel2 = AndroidNotificationChannel(
+    'push main channels',
+    //'high_importance_channel', // id
+    'second channel', // title
     description: 'This channel is used for important notifications',
     importance: Importance.high,
   );
   await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
       AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(
       channel);
+
+  await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
+      AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(
+      channel2);
 
   if (message?.notification != null){
     flutterLocalNotificationsPlugin.show(
